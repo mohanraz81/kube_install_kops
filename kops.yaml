@@ -1,0 +1,82 @@
+apiVersion: kops/v1alpha2
+kind: Cluster
+metadata:
+  creationTimestamp: 2019-09-08T13:39:21Z
+  name: NAME
+spec:
+  api:
+    dns: {}
+  authorization:
+    rbac: {}
+  additionalPolicies:
+    master: |
+      [
+        {
+          "Effect": "Allow",
+          "Action": ["ec2:*"],
+          "Resource": ["*"]
+        }
+      ]
+  channel: stable
+  cloudProvider: aws
+  configBase: s3://BUCKETNAME/NAME
+  etcdClusters:
+  - cpuRequest: 200m
+    etcdMembers:
+    - instanceGroup: master-us-east-1a
+      name: a
+    - instanceGroup: master-us-east-1b
+      name: b
+    - instanceGroup: master-us-east-1c
+      name: c
+    memoryRequest: 100Mi
+    name: main
+    version: 3.3.13
+  - cpuRequest: 100m
+    etcdMembers:
+    - instanceGroup: master-us-east-1a
+      name: a
+    - instanceGroup: master-us-east-1b
+      name: b
+    - instanceGroup: master-us-east-1c
+      name: c
+    memoryRequest: 100Mi
+    name: events
+    version: 3.3.13
+  iam:
+    allowContainerRegistry: true
+    legacy: false
+  kubelet:
+    anonymousAuth: false
+    authenticationTokenWebhook: true
+    authorizationMode: Webhook
+  kubernetesApiAccess:
+  - 0.0.0.0/0
+  kubernetesVersion: 1.12.10
+  masterInternalName: api.internal.NAME
+  masterPublicName: api.NAME
+  networkCIDR: 172.20.0.0/16
+  networking:
+    calico:
+      majorVersion: v3
+  nonMasqueradeCIDR: 100.64.0.0/10
+  sshAccess:
+  - 0.0.0.0/0
+  subnets:
+  - cidr: 172.20.32.0/19
+    name: us-east-1a
+    type: Public
+    zone: us-east-1a
+  - cidr: 172.20.64.0/19
+    name: us-east-1b
+    type: Public
+    zone: us-east-1b
+  - cidr: 172.20.96.0/19
+    name: us-east-1c
+    type: Public
+    zone: us-east-1c
+  topology:
+    dns:
+      type: Public
+    masters: public
+    nodes: public

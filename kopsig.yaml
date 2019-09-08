@@ -1,0 +1,79 @@
+apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: 2019-09-08T13:39:21Z
+  labels:
+    kops.k8s.io/cluster: NAME
+  name: master-us-east-1a
+spec:
+  image: kope.io/k8s-1.12-debian-stretch-amd64-hvm-ebs-2019-06-21
+  machineType: t2.medium
+  maxSize: 1
+  minSize: 1
+  nodeLabels:
+    kops.k8s.io/instancegroup: master-us-east-1a
+  role: Master
+  subnets:
+  - us-east-1a
+
+---
+
+apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: 2019-09-08T13:39:21Z
+  labels:
+    kops.k8s.io/cluster: NAME
+  name: master-us-east-1b
+spec:
+  image: kope.io/k8s-1.12-debian-stretch-amd64-hvm-ebs-2019-06-21
+  machineType: t2.medium
+  maxSize: 1
+  minSize: 1
+  nodeLabels:
+    kops.k8s.io/instancegroup: master-us-east-1b
+  role: Master
+  subnets:
+  - us-east-1b
+
+---
+
+apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: 2019-09-08T13:39:21Z
+  labels:
+    kops.k8s.io/cluster: NAME
+  name: master-us-east-1c
+spec:
+  image: kope.io/k8s-1.12-debian-stretch-amd64-hvm-ebs-2019-06-21
+  machineType: t2.medium
+  maxSize: 1
+  minSize: 1
+  nodeLabels:
+    kops.k8s.io/instancegroup: master-us-east-1c
+  role: Master
+  subnets:
+  - us-east-1c
+
+---
+
+apiVersion: kops/v1alpha2
+kind: InstanceGroup
+metadata:
+  creationTimestamp: 2019-09-08T13:39:21Z
+  labels:
+    kops.k8s.io/cluster: NAME
+  name: nodes
+spec:
+  image: kope.io/k8s-1.12-debian-stretch-amd64-hvm-ebs-2019-06-21
+  machineType: t2.medium
+  maxSize: 4
+  minSize: 4
+  nodeLabels:
+    kops.k8s.io/instancegroup: nodes
+  role: Node
+  subnets:
+  - us-east-1a
+  - us-east-1b
+  - us-east-1c
