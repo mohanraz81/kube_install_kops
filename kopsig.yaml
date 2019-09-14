@@ -15,7 +15,8 @@ spec:
   role: Master
   subnets:
   - us-east-1a
-
+  rootVolumeSize: 30
+  rootVolumeType: gp2
 ---
 
 apiVersion: kops/v1alpha2
@@ -35,6 +36,8 @@ spec:
   role: Master
   subnets:
   - us-east-1b
+  rootVolumeSize: 30
+  rootVolumeType: gp2
 
 ---
 
@@ -55,6 +58,8 @@ spec:
   role: Master
   subnets:
   - us-east-1c
+  rootVolumeSize: 30
+  rootVolumeType: gp2
 
 ---
 
@@ -77,3 +82,5 @@ spec:
   - us-east-1a
   - us-east-1b
   - us-east-1c
+  rootVolumeSize: 30
+  rootVolumeType: gp2
