@@ -100,7 +100,6 @@ echo "==============================="
  ssh-keygen -f id_rsa -t rsa -N ''
 echo "Done SSH KEYS"
 echo "==============================="
-sh -x install_kops.sh $NAME $BUCKET
 kops get cluster|grep $NAME
 if [ $? -eq 0 ]
 then
