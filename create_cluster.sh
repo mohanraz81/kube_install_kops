@@ -109,7 +109,7 @@ fi
 TEST1KOPSYAML=`grep NAME kops.yaml |wc -l`
 TEST2KOPSYAML=`grep BUCKET kops.yaml |wc -l`
 TESTKOPSIGYAML=`grep NAME kopsig.yaml |wc -l `
-if [ $TEST1KOPSYAML -ne 4 -o $TEST2KOPSYAML -ne 1 -o TESTKOPSIGYAML -ne 4 ]
+if [ $TEST1KOPSYAML -ne 4 -o $TEST2KOPSYAML -ne 1 -o $TESTKOPSIGYAML -ne 4 ]
 then
   echo "your kops.yaml and kopsig.yaml template files are bad "
   echo "delete the directory and replone using "
