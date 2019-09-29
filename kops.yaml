@@ -13,7 +13,15 @@ spec:
       [
         {
           "Effect": "Allow",
-          "Action": ["ec2:*"],
+          "Action": ["ec2:*", "cloudwatch:*"],
+          "Resource": ["*"]
+        }
+      ]
+    node: |
+      [
+        {
+          "Effect": "Allow",
+          "Action": ["ec2:*", "cloudwatch:*"],
           "Resource": ["*"]
         }
       ]

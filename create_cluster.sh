@@ -112,7 +112,7 @@ TESTKOPSIGYAML=`grep NAME kopsig.yaml |wc -l `
 if [ $TEST1KOPSYAML -ne 4 -o $TEST2KOPSYAML -ne 1 -o $TESTKOPSIGYAML -ne 4 ]
 then
   echo "your kops.yaml and kopsig.yaml template files are bad "
-  echo "delete the directory and replone using "
+  echo "delete the directory and reclone using "
   echo "git clone https://github.com/mohanraz81/kube_install_kops "
   exit 10
 fi

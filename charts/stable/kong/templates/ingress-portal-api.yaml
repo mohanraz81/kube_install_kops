@@ -1,0 +1,45 @@
+{{- if .Values.enterprise.enabled }}
+{{- if .Values.portalapi.ingress.enabled -}}
+{{- $serviceName := include "kong.fullname" . -}}
+{{- $servicePort := include "kong.ingress.servicePort" .Values.portalapi -}}
+{{- $path := .Values.portalapi.ingress.path -}}
+{{- $hosts_count := len .Values.portalapi.ingress.hosts -}}
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "kong.fullname" . }}-portalapi
+  labels:
+    app: {{ template "kong.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
+  annotations:
+    {{- range $key, $value := .Values.portalapi.ingress.annotations }}
+      {{ $key }}: {{ $value | quote }}
+    {{- end }}
+spec:
+  rules:
+    {{- if eq $hosts_count 0 }}
+    - http:
+        paths:
+          - path: {{ $path }}
+            backend:
+              serviceName: {{ $serviceName }}-portalapi
+              servicePort: {{ $servicePort }}
+    {{ else -}}
+    {{- range $host := .Values.portalapi.ingress.hosts }}
+    - host: {{ $host }}
+      http:
+        paths:
+          - path: {{ $path }}
+            backend:
+              serviceName: {{ $serviceName }}-portalapi
+              servicePort: {{ $servicePort }}
+    {{- end -}}
+    {{- end -}}
+  {{- if .Values.portalapi.ingress.tls }}
+  tls:
+{{ toYaml .Values.portalapi.ingress.tls | indent 4 }}
+  {{- end -}}
+{{- end -}}
+{{- end -}}
