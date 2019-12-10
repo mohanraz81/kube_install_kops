@@ -3,7 +3,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: 2019-09-08T13:39:21Z
   labels:
-    kops.k8s.io/cluster: NAME
+    kops.k8s.io/cluster: kubecluster.student24.courseandlabs.com
   name: master-us-west-2a
 spec:
   image: kope.io/k8s-1.12-debian-stretch-amd64-hvm-ebs-2019-06-21
@@ -24,7 +24,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: 2019-09-08T13:39:21Z
   labels:
-    kops.k8s.io/cluster: NAME
+    kops.k8s.io/cluster: kubecluster.student24.courseandlabs.com
   name: master-us-west-2b
 spec:
   image: kope.io/k8s-1.12-debian-stretch-amd64-hvm-ebs-2019-06-21
@@ -46,7 +46,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: 2019-09-08T13:39:21Z
   labels:
-    kops.k8s.io/cluster: NAME
+    kops.k8s.io/cluster: kubecluster.student24.courseandlabs.com
   name: master-us-west-2c
 spec:
   image: kope.io/k8s-1.12-debian-stretch-amd64-hvm-ebs-2019-06-21
@@ -68,7 +68,7 @@ kind: InstanceGroup
 metadata:
   creationTimestamp: 2019-09-08T13:39:21Z
   labels:
-    kops.k8s.io/cluster: NAME
+    kops.k8s.io/cluster: kubecluster.student24.courseandlabs.com
   name: nodes
 spec:
   image: kope.io/k8s-1.12-debian-stretch-amd64-hvm-ebs-2019-06-21

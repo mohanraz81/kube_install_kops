@@ -2,7 +2,7 @@ apiVersion: kops/v1alpha2
 kind: Cluster
 metadata:
   creationTimestamp: 2019-09-08T13:39:21Z
-  name: NAME
+  name: kubecluster.student24.courseandlabs.com
 spec:
   api:
     dns: {}
@@ -27,7 +27,7 @@ spec:
       ]
   channel: stable
   cloudProvider: aws
-  configBase: s3://BUCKET/NAME
+  configBase: s3://student24-courseandlabs-com-1575965987/kubecluster.student24.courseandlabs.com
   etcdClusters:
   - cpuRequest: 200m
     etcdMembers:
@@ -61,8 +61,8 @@ spec:
   kubernetesApiAccess:
   - 0.0.0.0/0
   kubernetesVersion: 1.12.10
-  masterInternalName: api.internal.NAME
-  masterPublicName: api.NAME
+  masterInternalName: api.internal.kubecluster.student24.courseandlabs.com
+  masterPublicName: api.kubecluster.student24.courseandlabs.com
   networkCIDR: 172.20.0.0/16
   networking:
     calico:
